@@ -49,6 +49,7 @@ function init() {
                      title = $('.header-title'),
                      entries = result.feed.entries,
                      entriesLen = entries.length,
+                     //在javascript中使用Handlebars.compile编译模板
                      entryTemplate = Handlebars.compile($('.tpl-entry').html());
 
                  title.html(feedName);   // 设置 header
@@ -59,7 +60,9 @@ function init() {
                   * 把转换得到的 HTML 添加到页面上的条目列表。
                  */
                  entries.forEach(function(entry) {
-                     container.append(entryTemplate(entry));
+                    console.log(entry);
+                    container.append(entryTemplate(entry));
+                    console.log(container);
                  });
 
                  if (cb) {
@@ -100,7 +103,6 @@ $(function() {
 
         feedId++;
     });
-
     /* 当我们的源列表中的一个链接被点击的时候，我们想要隐藏菜单，加载该源，
      * 组织链接的默认点击行为发生。
      */
