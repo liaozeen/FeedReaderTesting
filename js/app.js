@@ -60,9 +60,7 @@ function init() {
                   * 把转换得到的 HTML 添加到页面上的条目列表。
                  */
                  entries.forEach(function(entry) {
-                    console.log(entry);
                     container.append(entryTemplate(entry));
-                    console.log(container);
                  });
 
                  if (cb) {
@@ -111,6 +109,7 @@ $(function() {
 
         $('body').addClass('menu-hidden');
         loadFeed(item.data('id'));
+        console.log(container);
         return false;
     });
 

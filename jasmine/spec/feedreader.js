@@ -25,22 +25,23 @@ $(function() {
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
-        it('url is effective',function(){
+        function sameDetection(name){
+            //将相似的代码放入该方法中
             allFeeds.forEach(function(item){
-                expect(item.url).toBeDefined();
-                expect(item.url.length).not.toBe(0);
-            });
+                expect(item.name).toBeDefined();
+                expect(item.name.length).not.toBe(0);
+        });
+        }
 
+        it('url is effective',function(){
+            sameDetection("url");
         });
 
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
         it('name is effective',function(){
-            allFeeds.forEach(function(item){
-                expect(item.name).toBeDefined();
-                expect(item.name.length).not.toBe(0);
-            });
+            sameDetection("name");
         });
     });
 
@@ -83,9 +84,8 @@ $(function() {
             loadFeed(0,done);
         });
 
-        it('loadFeed is work',function(done){
+        it('loadFeed is work',function(){
             expect($('.feed').find('.entry').length).not.toBe(0);
-            done();
         });
     });
 
@@ -95,15 +95,22 @@ $(function() {
          * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
          * 记住，loadFeed() 函数是异步的。
          */
-         beforeEach(function(done){
-            allFeeds.forEach(function(item){
-                loadFeed(item.id,done);
-            });
+        var oldfeed,newfeed;
+
+        beforeEach(function(done){
+            loadFeed(1,function(){
+                oldfeed = $('.feed').find('.entry')[0].innerText;
+                done();
+        });
         });
 
-         it('Feed can be change',function(done){
-            expect($('.feed').find('.entry').length).not.toBe(0);
-            done();
+        it('Feed can be change',function(done){
+            loadFeed(2,function(){
+                newfeed = $('.feed').find('.entry')[0].innerText;
+                expect(newfeed).not.toEqual(oldfeed);
+                done();
+            });
         });
     });
+
 }());
