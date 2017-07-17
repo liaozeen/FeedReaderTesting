@@ -6,7 +6,7 @@
 
 1.[下载项目到本地](https://github.com/liaozeen/FeedReaderTesting/archive/master.zip)，并解压
 
-2.打开index.hrml，运行项目。在页面最下面可以看到用Jasmine测试的结果
+2.打开index.html，运行项目。在页面最下面可以看到用Jasmine测试的结果
 
 3.本项目的测试用例有：
 #### RSS源的定义，即应用中的 allFeeds 变量

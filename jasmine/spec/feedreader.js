@@ -30,7 +30,7 @@ $(function() {
             allFeeds.forEach(function(item){
                 expect(item.name).toBeDefined();
                 expect(item.name.length).not.toBe(0);
-        });
+            });
         }
 
         it('url is effective',function(){
@@ -101,7 +101,7 @@ $(function() {
             loadFeed(1,function(){
                 oldfeed = $('.feed').find('.entry')[0].innerText;
                 done();
-        });
+            });
         });
 
         it('Feed can be change',function(done){
